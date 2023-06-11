@@ -1,0 +1,1 @@
+D:\ComposeMovieApp\buildSrc\build\classes\kotlin\main\AppDependencies.class;D:\ComposeMovieApp\buildSrc\build\classes\kotlin\main\AppVersion.class;D:\ComposeMovieApp\buildSrc\build\classes\kotlin\main\ConfigureApp.class;D:\ComposeMovieApp\buildSrc\build\classes\kotlin\main\TestDependencies.class;D:\ComposeMovieApp\buildSrc\build\classes\kotlin\main\TestVersion.class

@@ -1,0 +1,102 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
+    id 'kotlin-parcelize'
+}
+
+android {
+    namespace = ConfigureApp.applicationId
+    compileSdk = AppVersion.compileSdkVersion
+
+    defaultConfig {
+        applicationId = ConfigureApp.applicationId
+        minSdk = AppVersion.minSdkVersion
+        targetSdk = AppVersion.targetSdkVersion
+        versionCode = ConfigureApp.versionCode
+        versionName = ConfigureApp.versionName
+        testInstrumentationRunner = AppVersion.testInstrumentationRunner
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+
+    testOptions {
+        animationsDisabled = true
+        unitTests {
+        }
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField "String", "BASE_URL", "\"https://api.themoviedb.org/3/\""
+            buildConfigField "String", "API_KEY", "\"662e2815a88732986f77e82fd5dccde2\""
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions.jvmTarget = JavaVersion.VERSION_11.toString()
+
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion AppVersion.composeVersion
+    }
+}
+
+dependencies {
+    // Core-ktx
+    implementation(AppDependencies.coreKtx)
+    // Compose
+    implementation(AppDependencies.composeUI)
+    implementation(AppDependencies.composeMaterial)
+    implementation(AppDependencies.composeUIToolingPreview)
+    implementation(AppDependencies.activityCompose)
+    // Navigation
+    implementation(AppDependencies.navCompose)
+    // Hilt
+    implementation(AppDependencies.hilt)
+    implementation(AppDependencies.hiltNavCompose)
+    kapt(AppDependencies.hiltCompiler)
+    // ViewModel & Livedata
+    implementation(AppDependencies.lifecycleViewModel)
+    implementation(AppDependencies.lifecycleLiveData)
+    implementation(AppDependencies.lifecycleRuntime)
+    // Coroutines
+    implementation(AppDependencies.coroutinesCore)
+    implementation(AppDependencies.coroutinesAndroid)
+    // Retrofit
+    implementation(AppDependencies.retrofit)
+    implementation(AppDependencies.converterGson)
+    implementation(AppDependencies.converterOkhttp)
+    implementation(AppDependencies.loggingInterceptor){
+        exclude group: 'org.json', module: 'json'
+    }
+    // Coil
+    implementation(AppDependencies.coilCompose)
+    // Chucker
+    debugImplementation(AppDependencies.chuckerLibrary)
+    releaseImplementation(AppDependencies.chuckerLibraryNoOp)
+    // Test
+    testImplementation(TestDependencies.junit)
+    testImplementation(TestDependencies.robolectric)
+    testImplementation(TestDependencies.archCore)
+    testImplementation(TestDependencies.coreKtx)
+    testImplementation(TestDependencies.junitKtx)
+    testImplementation(TestDependencies.kotlinCoroutines)
+    testImplementation(TestDependencies.mockitoKotlin)
+    testImplementation(TestDependencies.mockitoInline)
+    testImplementation(TestDependencies.truth)
+    androidTestImplementation(TestDependencies.extJUnit)
+    androidTestImplementation(TestDependencies.espressoCore)
+    androidTestImplementation(TestDependencies.extJUnitComposeUI)
+    debugImplementation(TestDependencies.extComposeUITooling)
+}

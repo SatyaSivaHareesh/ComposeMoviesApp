@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MoviesApp</string>
+    <string name="text_popularity">Popularity :\u0020</string>
+    <string name="text_release_date">Release Date :\u0020</string>
+    <string name="text_rating">Rating :\u0020</string>
+
+    <string name="unexpectedError">An unexpected error occurred</string>
+    <string name="couldntReachServerError">Couldn\'t reach server. Check your internet connection.</string>
+</resources>
